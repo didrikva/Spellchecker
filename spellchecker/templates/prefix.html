@@ -1,0 +1,26 @@
+{% include "header.j2" %}
+
+<div class="search-word">
+  <h1 class="check-h1">Search prefix</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% for word in prefix_found %}
+    <p>{{ word[0] }} {{ word[1] }}</p>
+  {% endfor %}
+  <form class="check-word" method="POST" action="{{ url_for('prefix_post') }}">
+    <label for="prefix">Enter a prefix</label>
+
+    <input type="text" id="prefix" name="prefix" value="{{ search_prefix }}" required>
+
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+{% include "footer.html" %}

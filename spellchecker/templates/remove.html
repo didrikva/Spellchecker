@@ -1,0 +1,25 @@
+{% include "header.j2" %}
+
+<div class="search-word">
+  <h1 class="check-h1">Remove word</h1>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form class="check-word" method="POST" action="{{ url_for('remove_word_post') }}">
+    <label for="remove-word">Enter a word</label>
+
+    <input type="text" id="remove-word" name="remove-word" value="{{ search_prefix }}" required>
+
+    <button type="submit">Remove</button>
+  </form>
+</div>
+
+{% include "footer.html" %}

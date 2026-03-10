@@ -1,0 +1,27 @@
+{% include "header.j2" %}
+
+<div class="search-word">
+  <h1 class="check-h1">Search prefix</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <div class="suffix">
+    {% for word in suffix_found %}
+      <p>{{ word }}</p>
+    {% endfor %}
+  </div>
+  <form class="check-word" method="POST" action="{{ url_for('suffix_post') }}">
+    <label for="suffix">Enter a suffix</label>
+    <input type="text" id="suffix" name="suffix" value="{{ search_suffix }}" required>
+
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+{% include "footer.html" %}

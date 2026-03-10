@@ -1,0 +1,23 @@
+{% include "header.j2" %}
+
+<div class="all_words">
+  <h1 class="all-words-h1">Dicionary contains {{ amount }} words</h1>
+  {% set previous = namespace(letter=None) %}
+  {% for word in all_sorted %}
+    {% if word[0] != previous.letter %}
+      {% if previous.letter is not none %}
+        </ul>
+      {% endif %}
+
+      <h2>{{ word[0] }}</h2>
+      <ul class="word-list">
+
+      {% set previous.letter = word[0] %}
+    {% endif %}
+
+    <li>{{ word }}</li>
+  {% endfor %}
+  </ul>
+</div>
+
+{% include "footer.html" %}

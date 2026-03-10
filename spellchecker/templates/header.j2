@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spellchecker</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"  rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"  rel="stylesheet">
+
+    <!-- Private stylesheet, loads last -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/style.css') }}">
+</head>
+
+<body role="document">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li {% if request.path == url_for("main") %}
+                    class="active"
+                    {% endif %}
+                    ><a href="{{ url_for('main') }}">Hem</a></li>
+                    <li {% if request.path == url_for("check_word") %}class="active"{% endif %}><a href="{{ url_for('check_word') }}">Check word</a></li>
+                    <li {%- if request.path == url_for("show_all") %} class="active" {% endif %}><a href="{{ url_for('show_all') }}">List word</a></li>
+                    <li {% if request.path == url_for("prefix") %}class="active"{% endif %}><a href="{{ url_for('prefix') }}">Prefix</a></li>
+                    <li {% if request.path == url_for("suffix") %}class="active"{% endif %}><a href="{{ url_for('suffix') }}">Suffix</a></li>
+                    <li {% if request.path == url_for("remove_word") %}class="active"{% endif %}><a href="{{ url_for('remove_word') }}">Remove word</a></li>
+                    <li {% if request.path == url_for("change_file") %}class="active"{% endif %}><a href="{{ url_for('change_file') }}">Change file</a></li>
+                    <li {%- if request.path == "/reset" %} class="active" {% endif %}><a href="{{ url_for('reset') }}">Reset</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>

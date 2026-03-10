@@ -1,0 +1,18 @@
+{% include "header.j2" %}
+
+<div class="search-word">
+  <h1 class="check-h1">Change file</h1>
+
+  <form role="form" method="POST" action="{{url_for('change_file_post')}}">
+
+            <input type="radio" name="file" value="{{ current_file }}" checked>   {{ current_file[2:] }}
+            {% for file in files %}
+              <br>
+              <input type="radio" name="file" value="{{ file }}">   {{ file[2:] }}
+            {% endfor %}
+            <br>
+      <button type="submit" class="btn btn-default">Change file</button>
+  </form>
+</div>
+
+{% include "footer.html" %}
