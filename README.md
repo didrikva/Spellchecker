@@ -18,4 +18,6 @@ python app.py
 - Flask
 - Jinja2
 
+## Bild från applikation
+
 ![Spellchecker bild](spellchecker/static/img/spellchecker.png)
